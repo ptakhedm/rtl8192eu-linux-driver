@@ -2288,7 +2288,7 @@ static void collect_traffic_statistics(_adapter *padapter)
 u8 traffic_status_watchdog(_adapter *padapter, u8 from_timer)
 {
 	u8	bEnterPS = _FALSE;
-	u16	BusyThreshold = 100;
+	u16	BusyThreshold = 20;
 	u8	bBusyTraffic = _FALSE, bTxBusyTraffic = _FALSE, bRxBusyTraffic = _FALSE;
 	u8	bHigherBusyTraffic = _FALSE, bHigherBusyRxTraffic = _FALSE, bHigherBusyTxTraffic = _FALSE;
 
@@ -2315,7 +2315,7 @@ u8 traffic_status_watchdog(_adapter *padapter, u8 from_timer)
 #else // !CONFIG_BT_COEXIST
 		// if we raise bBusyTraffic in last watchdog, using lower threshold.
 		if (pmlmepriv->LinkDetectInfo.bBusyTraffic)
-			BusyThreshold = 75;
+			BusyThreshold = 15;
 		if( pmlmepriv->LinkDetectInfo.NumRxOkInPeriod > BusyThreshold ||
 			pmlmepriv->LinkDetectInfo.NumTxOkInPeriod > BusyThreshold )
 #endif // !CONFIG_BT_COEXIST
